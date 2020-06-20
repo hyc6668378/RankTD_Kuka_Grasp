@@ -55,12 +55,7 @@ class KukaDiverseObjectEnv(Kuka, gym.Env):
             p.resetDebugVisualizerCamera(1.3, 180, -41, [0.52, -0.2, -0.33])
             p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
         else:
-            self.cid = p.connect(p.GUI,
-                                 options = "--width={} --height={} --window_backend=2 --render_device=1".format(self._width, self._height))
-            p.configureDebugVisualizer(p.COV_ENABLE_RENDERING, 0)
-            p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
-            p.configureDebugVisualizer(p.COV_ENABLE_WIREFRAME, 0)
-            p.configureDebugVisualizer(p.COV_ENABLE_DEPTH_BUFFER_PREVIEW, 0)
+            self.cid = p.connect(p.DIRECT)
 
         self.seed()
         self.action_space = spaces.Box(low=-1, high=1, shape=(5,))  # dx, dy, dz, da
@@ -274,7 +269,7 @@ class KukaDiverseObjectEnv(Kuka, gym.Env):
         self._env_step += 1
         self._atomic_action( action )
 
-        # if not self._isTest: self._domain_random()
+        if not self._isTest: self._domain_random()
 
         obs= self._get_observation()
 

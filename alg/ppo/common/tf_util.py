@@ -58,9 +58,11 @@ def make_session(num_cpu=None, make_default=False, graph=None):
     tf_config = tf.ConfigProto(
         allow_soft_placement=True,
         inter_op_parallelism_threads=num_cpu,
-        intra_op_parallelism_threads=num_cpu)
+        intra_op_parallelism_threads=num_cpu,
+        log_device_placement=True) # 打印 设备日志信息
     # Prevent tensorflow from taking all the gpu memory
     tf_config.gpu_options.allow_growth = True
+
     if make_default:
         return tf.InteractiveSession(config=tf_config, graph=graph)
     else:
