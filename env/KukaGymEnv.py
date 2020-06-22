@@ -54,6 +54,7 @@ class KukaDiverseObjectEnv(Kuka, gym.Env):
                                  options = "--window_backend=2 --render_device=0")
             p.resetDebugVisualizerCamera(1.3, 180, -41, [0.52, -0.2, -0.33])
             p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
+            p.configureDebugVisualizer(p.COV_ENABLE_SHADOWS, 0)  # close shadow
         else:
             self.cid = p.connect(p.DIRECT)
 

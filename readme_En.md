@@ -37,9 +37,6 @@ Supported systems
 
 - Ubuntu 16.04 or Ubuntu 18.04.
 - Python 3.6+
-- It can't run on a headless PC, because the image get in pybullet simulator need OpenCL shadow render, which can effectively avoid the judgment error of the relative position caused by the angle of view.
-
-
 
 Installation
 ============
