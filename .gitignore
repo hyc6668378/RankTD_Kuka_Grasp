@@ -8,3 +8,5 @@ __pycache__/
 *.ipynb
 logs/
 model/*.zip
+*.csv
+view.sh
