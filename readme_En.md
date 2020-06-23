@@ -71,8 +71,23 @@ The algorithm we adopt is PPO，with a multiprocess vectorized environments to i
 If you want to train by yourself:
 
 ```shell
-python train.py
+python train.py  
+# Start from scratch? or start from an existing model?
+# We recommend you check the contents of the file.
 ```
+
+```shell
+choose_best_model.py
+# Evaluate the best of existing models, which have been trained
+```
+
+
+```shell
+froze_model_to_pd.py
+# When you're satisfied, fix the model to .pd file.
+# yep, you have created smart robot.
+```
+
 
 
 Method

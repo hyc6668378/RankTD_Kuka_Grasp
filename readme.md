@@ -55,7 +55,7 @@ Demo
 我们训练好了一个模型，计算图和权重固化在`"model/Rank_TD.pd"`里。
 
 ```shell
-python demo.py
+python demo.py 
 ```
 训练
 ============
@@ -64,7 +64,19 @@ python demo.py
 如果希望自己接着训练：
 
 ```shell
-python train.py
+python train.py  
+# 从零开始练, 还是从已有模型接着练 记得稍稍看一下内容。
+```
+
+```shell
+choose_best_model.py
+# 从已经训练的n多个模型中，评估一个最好的
+```
+
+
+```shell
+froze_model_to_pd.py
+# 练到满意时候，就把模型固定下来。
 ```
 
 
