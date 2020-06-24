@@ -83,4 +83,4 @@ if __name__ == '__main__':
 
     _ = os.system("clear")
     for model_index, success_episode in global_success_dict.items():
-        print('model/{}.zip:\tget {:.2f}% successes rate in 1000 episodes'.format(model_index, EVALUATE_EPISODE*success_episode/100))
+        print('model/{}.zip:\tget {:.2f}% successes rate in 1000 episodes'.format(model_index, 100*success_episode/EVALUATE_EPISODE))
