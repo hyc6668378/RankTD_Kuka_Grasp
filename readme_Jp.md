@@ -18,8 +18,6 @@
 
 ![demo](./img/RankTD_kuka_demo.gif)
 
-Robot should master this task with Trial and Error. Interestingly, unlike traditional reinforcement learning (RL) tasks, which require a complex reward function, nor Imitation Learning (IL) require a large number of Demonstrations (S, A). We just need to specify, as far as possible, a sequence of states the robot should go through to complete the task (defined by the internal state of the simulator). The agent will follow the trace we have designed.
-
 ロボットが、試行錯誤することで、スキルを学習し、益々方策を賢くなれるようになりました。
 
 面白いところは、従来のロボット強化学習（RL）タスクに比べて、複雑な報酬関数の設計は不要になります。
@@ -97,13 +95,11 @@ froze_model_to_pd.py
 1. 報酬関数の設計の際に、タスクの目標を反映するだけでなく、効率的に探索できるのも大切です。したがって、多くの場合、報酬関数はすごく複雑になってしまう。それは（Reward Engineering)といます。
 2. もう1つの面倒臭いな問題は、現在の画像に基づいたロボット学習において、模倣学習（IL）の方法、あるいは(Demonstration)みたいな教師あり学習のデータセットをすごく依存している。
 
-An important reason for the combination of RL and IL is that IL significantly reduces the exploration space of agents by introducing prior knowledge. IL, however, also over-define the rules of the game and limit the creativity of the agent. This project aims to find a balance between the creativity of agents and the rigid rules of the game shaped by prior knowledge.
-
 RLとILを組み合わせる理由は、ILが事前知識を導入することでエージェントの探索空間を大幅に削減することができる。
 ただし、ILはゲームのルールを過度に定義し、エージェントの創造性を制限するという問題点もあります。このプロジェクトの目的は、どうやってエージェントの創造性と事前知識によって形成された厳格なルールの間にバランスを取れようにの試みです。
 
 In order to let the agent explore follow the expert track, we leverage a skill called Rank Temporal-Difference (Rank TD):
-
+エージェントが教師軌跡を辿れようにするために、Rank Temporal-Difference（RankTD）と呼ばれる報酬設計技術を提案いたします。
 
  - Rank function is defined as a mapping  S->A.
  - We hope the agent learns a policy, when the trajectory generated under the policy, The rank of trajectory is also monotonically increasing.
