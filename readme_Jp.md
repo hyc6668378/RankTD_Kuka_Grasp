@@ -98,7 +98,6 @@ froze_model_to_pd.py
 RLとILを組み合わせる理由は、ILが事前知識を導入することでエージェントの探索空間を大幅に削減することができる。
 ただし、ILはゲームのルールを過度に定義し、エージェントの創造性を制限するという問題点もあります。このプロジェクトの目的は、どうやってエージェントの創造性と事前知識によって形成された厳格なルールの間にバランスを取れようにの試みです。
 
-In order to let the agent explore follow the expert track, we leverage a skill called Rank Temporal-Difference (Rank TD):
 エージェントが教師軌跡を辿れようにするために、Rank Temporal-Difference（RankTD）と呼ばれる報酬設計技術を提案いたします。
 
  - Rank function is defined as a mapping  S->A.
