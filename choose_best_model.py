@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-这个脚本是， 跑了n多个模型， 想挑一个最好的。
+这个脚本有两个用途， 1, 跑了n多个模型， 想挑一个最好的。 2, 开多进程测试一个模型.
 
 方法很简单，开n个进程，一个进程测试一个model
 
@@ -9,8 +9,14 @@
 
 
 #---------------超参数搁这调------------------------
-model_num_list = [11, 12, 13, 14, 15, 16, 17]  # 对应 model/11.zip ...  model/17.zip
-EVALUATE_EPISODE = 1000
+sub_work_num = 10  # 不等于1时，代表只测试一个模型
+
+if sub_work_num==1:
+    model_num_list = [1,2,3,4,5] # 对应 model/1.zip ...  model/5.zip
+else:
+    model_num_list = [2]*sub_work_num
+
+Workor_EPISODE = 200
 #----------------------------------------------------
 
 
@@ -48,7 +54,7 @@ def evaluate_worker(model_index):
 
     local_success = 0
 
-    for _ in tqdm(range( EVALUATE_EPISODE )):
+    for _ in range(Workor_EPISODE):
         o, done = env.reset(), False
 
         while not done:
@@ -59,13 +65,13 @@ def evaluate_worker(model_index):
             local_success += 1
 
     # update global_dict
-    global_success_dict[model_index] = local_success
+    global_success_dict[model_index] += local_success
 
 if __name__ == '__main__':
 
     global_success_dict = multiprocessing.Manager().dict()
     for each_model in model_num_list:
-        assert isinstance(each_model, int)
+        # assert isinstance(each_model, int)
         global_success_dict[ each_model ] = 0
 
 
@@ -75,12 +81,16 @@ if __name__ == '__main__':
 
     for k in  model_num_list:
 
-        assert isinstance(k, int)
+        # assert isinstance(k, int)
 
         p.apply_async(evaluate_worker, args=(k,))
     p.close()
     p.join()
 
     _ = os.system("clear")
+
     for model_index, success_episode in global_success_dict.items():
-        print('model/{}.zip:\tget {:.2f}% successes rate in {} episodes'.format(model_index, 100*success_episode/EVALUATE_EPISODE, EVALUATE_EPISODE))
+        print('model/{}.zip:\tget {:.2f}% successes rate in {} episodes'.format(
+            model_index,
+            100*success_episode/(Workor_EPISODE if sub_work_num == 1 else Workor_EPISODE * sub_work_num),
+            Workor_EPISODE if sub_work_num == 1 else Workor_EPISODE * sub_work_num ))

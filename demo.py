@@ -28,7 +28,7 @@ demo_policy = RankTD_policy()
 if __name__ == '__main__':
     os.system("clear")
     env.seed(0)
-    for i in range(10):
+    for i in range(100):
         _ = os.system("clear")
         print('\n---------------------------------------------------\n')
         print('\n\t\t\tEpisode {}\n'.format(i+1))
