@@ -17,7 +17,7 @@ env = KukaDiverseObjectEnv(renders=True,
                            blockRandom=0.0, cameraRandom=0,
                            actionRepeat=200, numObjects=1,
                            single_img=False,
-                           isTest=False,
+                           isTest=True,
                            verbose=True)
 
 

@@ -7,6 +7,5 @@ __pycache__/
 .ipynb_checkpoints
 *.ipynb
 logs/
-model/*.zip
 *.csv
 view.sh
