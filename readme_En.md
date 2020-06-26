@@ -13,14 +13,30 @@ We designed a Pick and Place task with a robotic arm that grasp an object and pu
 ![Actor网络架构](./img/actor.png)
 
 
-
 Only two cameras (one on the upper right and one on the arm's shoulder) can be used to percept the world.
 
 ![demo](./img/RankTD_kuka_demo.gif)
 
-Robot should master this task with Trial and Error. Interestingly, unlike traditional reinforcement learning (RL) tasks, which require a complex reward function, nor Imitation Learning (IL) require a large number of Demonstrations (S, A). We just need to specify, as far as possible, a sequence of states the robot should go through to complete the task (defined by the internal state of the simulator). The agent will follow the trace we have designed.
+Robot should master this task with Trial and Error. 
+Interestingly, unlike traditional reinforcement learning (RL) tasks, which require a complex reward function, 
+nor Imitation Learning (IL) require a large number of Demonstrations (S, A). We just need to specify, as far as possible, a sequence of states the robot should go through to complete the task (defined by the internal state of the simulator). 
+The agent will follow the trace we have designed.
 
 
+![demo](./img/RankTD_kuka_demo.gif)
+
+In the training phase, we prepare 90 objects, with different shapes, sizes and colors
+and we random the position of camera and robot base.
+
+During the test phase, we prepare 10 objects, which never be seen in training phase.
+and fixed position of camera and robot base.
+
+We achieve 80% test success rate
+
+![learning_curve](./img/RankTD_learning_curve.png)
+
+
+During the test phase, the camera and the base coordinate system of the robot were fixed using 10 objects not seen in the training phase.
 
 ![观测图像](./img/obs.png)
 
