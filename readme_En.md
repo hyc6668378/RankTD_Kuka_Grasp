@@ -23,7 +23,7 @@ nor Imitation Learning (IL) require a large number of Demonstrations (S, A). We 
 The agent will follow the trace we have designed.
 
 
-![demo](./img/RankTD_kuka_demo.gif)
+![demo](./img/kuka.gif)
 
 In the training phase, we prepare 90 objects, with different shapes, sizes and colors
 and we random the position of camera and robot base.
@@ -42,7 +42,7 @@ During the test phase, the camera and the base coordinate system of the robot we
 
 
 
-click here for [details](./doc/robomech_RM20-0006.pdf)
+click here for [details](./doc/master_thesis.pdf)
 
 
 

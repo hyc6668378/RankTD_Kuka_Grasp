@@ -29,9 +29,9 @@
 
 我们的测试成功率为80%
 
-![learning_curve](./img/RankTD_learning_curve.png)
+![learning_curve](./img/kuka.png)
 
-详细内容请[点击这里](./doc/robomech_RM20-0006.pdf)
+详细内容请[点击这里](./doc/master_thesis.pdf)
 
 
 

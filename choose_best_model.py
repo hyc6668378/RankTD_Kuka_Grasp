@@ -9,14 +9,14 @@
 
 
 #---------------超参数搁这调------------------------
-sub_work_num = 1  # 不等于1时，代表只测试一个模型
+sub_work_num = 12  # 不等于1时，代表只测试一个模型
 
 if sub_work_num==1:
     model_num_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 'current_best' ] # 对应 model/1.zip ...  model/5.zip
 else:
-    model_num_list = [2]*sub_work_num
+    model_num_list = ['current_best']*sub_work_num
 
-Workor_EPISODE = 2000
+Workor_EPISODE = 300
 #----------------------------------------------------
 
 
@@ -33,10 +33,10 @@ from tqdm import tqdm
 
 env_fn = lambda : KukaDiverseObjectEnv(renders=False,
                                        maxSteps=32,
-                                       blockRandom=0.2, cameraRandom=0.5,
+                                       blockRandom=0.2, cameraRandom=1.5,
                                        actionRepeat=200, numObjects=1,
                                        single_img=False,
-                                       isTest=False,
+                                       isTest=True,
                                        verbose=False)
 
 def evaluate_worker(model_index):
