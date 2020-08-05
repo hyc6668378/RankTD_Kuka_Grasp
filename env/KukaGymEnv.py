@@ -76,6 +76,9 @@ class KukaDiverseObjectEnv(Kuka, gym.Env):
         self.finger_angle = 0.3
         self._success = False
 
+        p.removeAllUserDebugItems()
+
+
         self.out_of_range = False
         self._collision_box = False
         self.drop_down = False
@@ -103,7 +106,7 @@ class KukaDiverseObjectEnv(Kuka, gym.Env):
 
         self._rank_before = self._rank_1()
 
-        self._domain_random()
+        # self._domain_random()
         return self._get_observation()
 
     def _domain_random(self):
@@ -151,12 +154,20 @@ class KukaDiverseObjectEnv(Kuka, gym.Env):
         act_descale = np.array([0.05, 0.05, 0.05, np.radians(90), 1.])
         action = action * act_descale + np.array([0., 0., 0.02, 0., 0.])
 
+
         state = p.getLinkState(self._kuka.kukaUid, self._kuka.kukaEndEffectorIndex)
         current_End_EffectorPos = np.array( state[0] )
 
         goal_pose = np.clip( current_End_EffectorPos + action[:3], a_min=np.array([0.1758, -0.4499, 0.0848]),
                                                                     a_max=np.array([0.79640, 0.5972 , 0.56562]) )
         out_of_range = np.sum( (goal_pose != current_End_EffectorPos + action[:3])[:2] )
+
+        p.addUserDebugLine(lineFromXYZ=current_End_EffectorPos + np.array([0., 0., -0.2]),
+                           lineToXYZ=goal_pose + np.array([0., 0., -0.2]),
+                           lineColorRGB=[0., 1., 0.],
+                           lineWidth=20.1,
+                           lifeTime=1.)
+
         self.out_of_range = True if out_of_range else False
 
         if self._isTest:
