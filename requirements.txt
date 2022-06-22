@@ -19,7 +19,7 @@ lazy-object-proxy==1.4.3
 Markdown==3.2.1
 matplotlib==3.2.0
 mccabe==0.6.1
-numpy==1.18.1
+numpy==1.22.0
 opencv-python==4.2.0.32
 pandas==1.0.1
 Pillow==7.0.0
